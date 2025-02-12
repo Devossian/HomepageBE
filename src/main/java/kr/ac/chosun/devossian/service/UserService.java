@@ -1,4 +1,4 @@
 package kr.ac.chosun.devossian.service;
 
-public class User {
+public class UserService {
 }

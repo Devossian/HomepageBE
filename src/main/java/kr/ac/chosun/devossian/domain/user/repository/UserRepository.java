@@ -1,5 +1,4 @@
 package kr.ac.chosun.devossian.domain.user.repository;
-
 import kr.ac.chosun.devossian.domain.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -3,7 +3,9 @@ package kr.ac.chosun.devossian.domain.user.service;
 import jakarta.transaction.Transactional;
 import kr.ac.chosun.devossian.domain.user.domain.User;
 import kr.ac.chosun.devossian.domain.user.dto.UserRegisterRequest;
+import kr.ac.chosun.devossian.domain.user.exception.UseremailAlreadyExistedException;
 import kr.ac.chosun.devossian.domain.user.repository.UserRepository;
+import kr.ac.chosun.devossian.global.error.exception.SchoolIdAlreadyExistedException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,11 +22,11 @@ public class UserService {
     public User signUp(UserRegisterRequest userRegisterRequest) {
 
         if(userRepository.existsByEmail(userRegisterRequest.getUseremail())){
-            //throw new UseremailAlreadyException();
+            throw new UseremailAlreadyExistedException();
         }
 
         if(userRepository.existsBySchoolId(userRegisterRequest.getUserschoolID())){
-            //throw new SchoolIDAlreadyExistedException();
+            throw new SchoolIdAlreadyExistedException();
         }
 
         User user = User.builder()

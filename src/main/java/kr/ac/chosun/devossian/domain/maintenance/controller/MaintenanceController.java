@@ -1,17 +1,22 @@
 package kr.ac.chosun.devossian.domain.maintenance.controller;
 
 import jakarta.validation.Valid;
+import kr.ac.chosun.devossian.domain.maintenance.domain.Type;
 import kr.ac.chosun.devossian.domain.maintenance.dto.MaintenanceCreateRequestDto;
 import kr.ac.chosun.devossian.domain.maintenance.dto.MaintenanceResponseDto;
+import kr.ac.chosun.devossian.domain.maintenance.dto.MaintenanceSearchRequestDto;
 import kr.ac.chosun.devossian.domain.maintenance.dto.MaintenanceUpdateRequestDto;
 import kr.ac.chosun.devossian.domain.maintenance.service.MaintenanceService;
 import kr.ac.chosun.devossian.domain.user.domain.User;
 import kr.ac.chosun.devossian.global.result.ResultCodeMessage;
 import kr.ac.chosun.devossian.global.result.ResultResponseDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
 
 
 @RestController
@@ -54,6 +59,15 @@ public class MaintenanceController {
         maintenanceService.deleteById(id);
 
         return ResponseEntity.ok(ResultResponseDTO.of(ResultCodeMessage.POST_DELETE_SUCCESS));
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<?> getList(@ModelAttribute MaintenanceSearchRequestDto dto,
+                                     Pageable pageable){
+        Page<MaintenanceResponseDto> dtoList = maintenanceService.getList(dto, pageable);
+
+        return ResponseEntity.ok(ResultResponseDTO.of(ResultCodeMessage.POST_VIEW_SUCCESS, dtoList));
+
     }
 
 }

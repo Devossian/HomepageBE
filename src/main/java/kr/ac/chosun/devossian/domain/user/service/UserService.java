@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+//    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Transactional
     public User signUp(UserRegisterRequest userRegisterRequest) {
@@ -34,7 +34,7 @@ public class UserService {
                 .name(userRegisterRequest.getUsername())
                 .build();
 
-        user.setEncPassword(bCryptPasswordEncoder);
+//        user.setEncPassword(bCryptPasswordEncoder);
 
         return userRepository.save(user);
     }

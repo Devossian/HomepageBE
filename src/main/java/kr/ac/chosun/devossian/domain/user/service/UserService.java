@@ -14,17 +14,17 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
-//    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Transactional
     public User signUp(UserRegisterRequest userRegisterRequest) {
 
         if(userRepository.existsByEmail(userRegisterRequest.getUseremail())){
-            //throw new UseremailAlreadyException();
+            throw new UseremailAlreadyExistedException();
         }
 
         if(userRepository.existsBySchoolId(userRegisterRequest.getUserschoolID())){
-            //throw new SchoolIDAlreadyExistedException();
+            throw new SchoolIdAlreadyExistedException();
         }
 
         User user = User.builder()
@@ -34,7 +34,7 @@ public class UserService {
                 .name(userRegisterRequest.getUsername())
                 .build();
 
-//        user.setEncPassword(bCryptPasswordEncoder);
+        user.setEncPassword(bCryptPasswordEncoder);
 
         return userRepository.save(user);
     }

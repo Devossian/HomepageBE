@@ -28,7 +28,11 @@ public enum ErrorCodeMessage {
     JWT_TOKEN_EXPIRED( 401, "만료된 토큰입니다."),
 
     // FileConvert
-    FILE_IMAGE_TYPE_MISMATCH(400, "파일 확장자가 지원되지 않습니다.");
+    FILE_IMAGE_TYPE_MISMATCH(400, "파일 확장자가 지원되지 않습니다."),
+
+    // Post
+    POST_NOT_FOUND(400, "존재 하지 않는 글 입니다."),
+    INVALID_POST_REQUEST(400, "입력 값이 잘못 되었습니다");
 
     private final int status;
     private final String message;

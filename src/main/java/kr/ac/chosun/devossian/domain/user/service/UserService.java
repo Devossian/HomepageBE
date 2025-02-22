@@ -20,11 +20,11 @@ public class UserService {
     public User signUp(UserRegisterRequest userRegisterRequest) {
 
         if(userRepository.existsByEmail(userRegisterRequest.getUseremail())){
-            //throw new UseremailAlreadyException();
+            throw new UseremailAlreadyExistedException();
         }
 
         if(userRepository.existsBySchoolId(userRegisterRequest.getUserschoolID())){
-            //throw new SchoolIDAlreadyExistedException();
+            throw new SchoolIdAlreadyExistedException();
         }
 
         User user = User.builder()

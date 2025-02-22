@@ -11,6 +11,7 @@ spring:
     password:
 
   jpa:
+    defer-datasource-initialization: true
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
@@ -18,3 +19,13 @@ spring:
       hibernate:
         jdbc:
           time_zone: UTC
+        format_sql: true
+
+    show-sql: true
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

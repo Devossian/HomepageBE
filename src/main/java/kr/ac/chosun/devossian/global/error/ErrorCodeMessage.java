@@ -14,8 +14,8 @@ public enum ErrorCodeMessage {
 
     // User
     USER_NOT_EXISTED(400,  "존재 하지 않는 유저입니다."),
-    USERNAME_EXISTED(400,  "이미 존재하는 아이디 입니다."),
-    NICKNAME_EXISTED(400,  "이미 존재하는 닉네임 입니다."),
+    USEREMAIL_EXISTED(400,  "이미 존재하는 이메일 입니다."),
+    SCHOOLID_EXISTED(400,  "이미 존재하는 학번 입니다."),
     AUTHENTICATION_FAIL(401,  "로그인이 필요한 회원입니다."),
     PASSWORD_NOT_MATCH(401, "비밀번호가 일치하지 않습니다."),
     ACCOUNT_MISMATCH(401,  "회원 정보가 일치하지 않습니다."),

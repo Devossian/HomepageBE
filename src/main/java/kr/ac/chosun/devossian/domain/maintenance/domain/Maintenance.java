@@ -24,7 +24,7 @@ public class Maintenance extends BaseTimeEntity {
     @Column(name = "content", nullable = false)
     private String content;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY) //DOC: 유저기능 추가로 인한 코드 변경
     @JoinColumn(name = "user_id")
     private User user;
 

@@ -1,15 +1,13 @@
 package kr.ac.chosun.devossian.domain.user.dto;
 
-import kr.ac.chosun.devossian.domain.user.Enum.Role;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-public class UserRegisterRequest {
+@NoArgsConstructor
+public class UpdateUserRequest {
     private String useremail;
     private String userpassword;
     private String userschoolID;
     private String username;
-    private Role userrole;
 }
-
-
